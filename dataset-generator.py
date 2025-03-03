@@ -8,7 +8,7 @@ def clean_first_name(first_name):
   if not isinstance(first_name, str) or not first_name.isascii() or not first_name.isalpha(): return None
   first_first_name = first_name.split(' ')[0].strip()
   if len(first_first_name) >= 2:
-    return first_name.strip()
+    return first_name.lower().strip()
   else:
     return None
 
