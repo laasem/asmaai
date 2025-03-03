@@ -26,7 +26,7 @@ The file `names-present-big.txt` represents the dataset used for training, devel
 3. Move the `EG.csv` file to the current directory.
 
 ## Naming
-Asmaai is a portmonteau of the Arabic word "أسماء" ("_asmaa_" or names) and AI.
+Asmaai is a portmanteau of the Arabic word "أسماء" ("_asmaa_" or names) and AI.
 
 ## Credits
 - Egyptian name data pulled from https://github.com/philipperemy/name-dataset.
