@@ -19,7 +19,7 @@ to run script in a virtual environment. Please note that the script takes up tim
 
 When done, run `source .env/bin/deactivate` to deactivate virtual environment.
 
-# Regenerating dataset
+## Regenerating dataset
 The file `names-present-big.txt` represents the dataset used for training, development, and test. To regenerate it:
 1. Download the name dataset from https://github.com/philipperemy/name-dataset.
 2. Unzip the folder.
