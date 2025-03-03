@@ -19,8 +19,15 @@ to run script in a virtual environment. Please note that the script takes up tim
 
 When done, run `source .env/bin/deactivate` to deactivate virtual environment.
 
+# Regenerating dataset
+The file `names-present-big.txt` represents the dataset used for training, development, and test. To regenerate it:
+1. Download the name dataset from https://github.com/philipperemy/name-dataset.
+2. Unzip the folder.
+3. Move the `EG.csv` file to the current directory.
+
 ## Naming
 Asmaai is a portmonteau of the Arabic word "أسماء" ("_asmaa_" or names) and AI.
 
 ## Credits
-Developed as part of the NLP course of the Universitat Pompeu Fabra's Master in Theoretical and Applied Linguistics taught by Professor Thomas Brochhagen.
+- Egyptian name data pulled from https://github.com/philipperemy/name-dataset.
+- Developed as part of the NLP course of the Universitat Pompeu Fabra's Master in Theoretical and Applied Linguistics taught by Professor Thomas Brochhagen.

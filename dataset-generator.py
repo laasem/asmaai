@@ -14,7 +14,7 @@ def clean_first_name(first_name):
 
 # Read CSV of Egyptian names pulled from Facebook into dataframe
 colnames=['first_name', 'last_name', 'gender', 'country']
-df = pd.read_csv('fb-eg.csv', names=colnames, usecols=['first_name'])
+df = pd.read_csv('EG.csv', names=colnames, usecols=['first_name'])
 
 # Clean, dropping invalid rows replaced with None
 df['first_name'] = df.apply(lambda row: clean_first_name(row['first_name']), axis=1)
