@@ -30,4 +30,5 @@ Asmaai is a portmanteau of the Arabic word "أسماء" ("_asmaa_" or names) and
 
 ## Credits
 - Egyptian name data pulled from https://github.com/philipperemy/name-dataset.
+- Code adapted from https://github.com/karpathy/makemore.
 - Developed as part of the NLP course of the Universitat Pompeu Fabra's Master in Theoretical and Applied Linguistics taught by Professor Thomas Brochhagen.
