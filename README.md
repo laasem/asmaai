@@ -20,7 +20,7 @@ to run script in a virtual environment. Please note that the script takes up tim
 When done, run `source .env/bin/deactivate` to deactivate virtual environment.
 
 ## Naming
-Asmaai is a portmonteau of the Arabic word "أسماء" ("__asmaa__" or names) and AI.
+Asmaai is a portmonteau of the Arabic word "أسماء" ("_asmaa_" or names) and AI.
 
 ## Credits
 Developed as part of the NLP course of the Universitat Pompeu Fabra's Master in Theoretical and Applied Linguistics taught by Professor Thomas Brochhagen.
