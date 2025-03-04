@@ -231,3 +231,13 @@ h = torch.tanh(emb.view(-1, 30) @ W1 + b1) # (32, 100)
 logits = h @ W2 + b2 # (32, 27)
 loss = F.cross_entropy(logits, Ytest)
 print(loss)
+
+# historical test loss
+encoder_obj = encoder(names_past)
+decoder_obj = decoder(encoder_obj)
+historical_Xtest, historicalYtest = build_dataset(names_past, encoder_obj)
+emb = C[historical_Xtest] # (32, 3, 2)
+h = torch.tanh(emb.view(-1, 30) @ W1 + b1) # (32, 100)
+logits = h @ W2 + b2 # (32, 27)
+loss = F.cross_entropy(logits, historicalYtest)
+print(loss)
