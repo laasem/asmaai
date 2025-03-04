@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 %matplotlib inline
 
 # Import names
-names_present = open('names-present-big.txt', 'r').read().splitlines()
+names_present = open('names-present.txt', 'r').read().splitlines()
 names_past = open('names-past.txt', 'r').read().splitlines()
 
 #########
@@ -107,9 +107,7 @@ def initialize_parameters(encoder):
   parameters = [C, W1, b1, W2, b2]
 
   # Initialize gradients in parameter tensors
-  for parameter in parameters:
-    parameter.requires_grad = True
-    parameter.grad = None
+  for parameter in parameters: parameter.requires_grad = True
 
   return parameters
 
@@ -146,11 +144,11 @@ def train_model(parameters, Xtrain, Ytrain):
     loss = F.cross_entropy(logits, Ytrain[index])
 
     # BACKWARD PASS
+    for parameter in parameters: parameter.grad = None
     loss.backward()
 
-    # Initialize step size,
-    # starting out faster then slowing down
-    lr = 0.1 if i < 100000 else 0.01
+    # Initialize learning rate, starting out faster then slowing down
+    lr = 0.5 if i < 100000 else 0.05
 
     # Update gradients
     for parameter in parameters: parameter.data += -lr * parameter.grad
@@ -159,7 +157,7 @@ def train_model(parameters, Xtrain, Ytrain):
     stepi.append(i)
     lossi.append(loss.log10().item())
 
-  return [[C, W1, b1, W2, b2], stepi, lossi]
+  return [parameters, stepi, lossi]
 
 ########
 
@@ -192,7 +190,7 @@ parameters = initialize_parameters(encoder)
 plt.plot(step, loss)
 
 # Run model to generate names
-NUM_OF_NAMES_TO_GENERATE = 20
+NUM_OF_NAMES_TO_GENERATE = 100
 
 [C, W1, b1, W2, b2] = learned_parameters
 generator = torch.Generator().manual_seed(299283892)
@@ -213,7 +211,23 @@ for _ in range(NUM_OF_NAMES_TO_GENERATE):
 
     print(''.join(decoder[i] for i in out))
 
-# Calculate 2021 loss
+# training loss
+emb = C[Xtrain] # (32, 3, 2)
+h = torch.tanh(emb.view(-1, 30) @ W1 + b1) # (32, 100)
+logits = h @ W2 + b2 # (32, 27)
+loss = F.cross_entropy(logits, Ytrain)
+print(loss)
 
-# Calculate 1921 loss
+# validation loss
+emb = C[Xdev] # (32, 3, 2)
+h = torch.tanh(emb.view(-1, 30) @ W1 + b1) # (32, 100)
+logits = h @ W2 + b2 # (32, 27)
+loss = F.cross_entropy(logits, Ydev)
+print(loss)
 
+# test loss
+emb = C[Xtest] # (32, 3, 2)
+h = torch.tanh(emb.view(-1, 30) @ W1 + b1) # (32, 100)
+logits = h @ W2 + b2 # (32, 27)
+loss = F.cross_entropy(logits, Ytest)
+print(loss)
